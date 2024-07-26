@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { LogBox, StyleSheet, Text, View } from 'react-native';
+import Index from "./components/screens/Index";
+import { Host } from "react-native-portalize";
 
 export default function App() {
+  LogBox.ignoreLogs(["Setting a timer"]);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // <MainProvider>
+    <Host>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'red',
+        }}
+      >
+        <Index />
+      </View>
+    </Host>
+
+    // </MainProvider>
+
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
